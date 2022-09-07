@@ -55,24 +55,16 @@
   // ---------------------
 
   function rovarspraket(str) {
-    let rov = "";
+    let translatedText = "";
 
     for (let i = 0; i < str.length; i++) {
-      if (
-        str[i] === "a" ||
-        str[i] === "e" ||
-        str[i] === "i" ||
-        str[i] === "o" ||
-        str[i] === "u"
-      ) {
-        rov = rov + str[i];
-      } else if (str[i] === " ") {
-        rov = rov + str[i];
+      if ("bcdfghjklmnpqrstvwxyz".includes(str[i])) {
+        translatedText = translatedText + str[i] + "o" + str[i];
       } else {
-        rov = rov + str[i] + "o" + str[i];
+        translatedText = translatedText + str[i];
       }
-      return rov;
     }
+    return translatedText;
   }
 
   // ---------------------
@@ -123,13 +115,58 @@
   // Define a function findLongestWord() that takes an array of words and returns the length of the longest one.
   // ---------------------
 
+  // sorts through an array and determines the longest word in that array and outputs its numeric length
+  // arr is any array of various words
+  // return the numeric value of the length of the longest word
+  function findLongestWord(arr) {
+    let word = "";
+
+    for (let i = 0; i < arr.length; i++) {
+      if (word.length < arr[i].length) {
+        word = arr[i];
+      }
+    }
+    return word.length;
+  }
+
   // ---------------------
   // Define a function filterLongWords() that takes an array of words and an integer i and returns the array of words that are longer than i.
   // ---------------------
 
+  // compares the length of a word in an array to an intager and adds that word to a new array if it is greater
+  // arr is any array of various words and int is any whole numnber intager
+  // return the new array formed from words longer than the intager
+  function filterLongWords(arr, int) {
+    let newArr = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].length > int) {
+        newArr.push(arr[i]);
+      }
+    }
+    return newArr;
+  }
+
   // ---------------------
   // Define a function charFreq() that takes a string and builds a frequency listing of the characters contained in it. Represent the frequency listing as a Javascript object. Try it with something like charFreq("abbabcbdbabdbdbabababcbcbab").
   // ---------------------
+
+  // takes the characters from a string and counts how many times they appear
+  // str is a string of any characters
+  // return number of times character in question appears
+  function charFreq(str) {
+    let frequency = {};
+
+    for (let i = 0; i < str.length; i++) {
+      let character = str.charAt(i);
+      if (character in frequency) {
+        frequency[character]++;
+      } else {
+        frequency[character] = 1;
+      }
+    }
+    return frequency;
+  }
 
   ////////////////////////////////////////////////////////////////////////
   /////////////////////////DO NOT CHANGE CODE BELOW///////////////////////
