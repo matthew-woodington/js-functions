@@ -35,20 +35,26 @@
   // str is a single letter string
   // return true if string is a vowel return false if not
   function isVowel(str) {
-    let string = str.toLowerCase();
+    str = str.toLowerCase();
 
     if (
-      string === "a" ||
-      string === "e" ||
-      string === "i" ||
-      string === "o" ||
-      string === "u"
+      str === "a" ||
+      str === "e" ||
+      str === "i" ||
+      str === "o" ||
+      str === "u"
     ) {
       return true;
     } else {
       return false;
     }
   }
+
+  // alt:
+  // function isVowel(str) {
+  //   str = str.toLowerCase();
+  //   return 'aeiou'.includes(str);
+  // }
 
   // ---------------------
   // Write a function rovarspraket() that will translate a text into "rövarspråket". That is, double every consonant and place an occurrence of "o" in between. For example, translate("this is fun") should return the string "tothohisos isos fofunon".
@@ -59,9 +65,9 @@
 
     for (let i = 0; i < str.length; i++) {
       if ("bcdfghjklmnpqrstvwxyz".includes(str[i])) {
-        translatedText = translatedText + str[i] + "o" + str[i];
+        translatedText += str[i] + "o" + str[i];
       } else {
-        translatedText = translatedText + str[i];
+        translatedText += str[i];
       }
     }
     return translatedText;
@@ -78,7 +84,7 @@
     let sum = 0;
 
     for (let i = 0; i < array.length; i++) {
-      sum = sum + array[i];
+      sum += array[i];
     }
     return sum;
   }
@@ -90,7 +96,7 @@
     let sum = 1;
 
     for (let i = 0; i < array.length; i++) {
-      sum = sum * array[i];
+      sum *= array[i];
     }
     return sum;
   }
@@ -106,9 +112,14 @@
     let newStr = "";
 
     for (let i = str.length - 1; i >= 0; i--) {
-      newStr = newStr + str[i];
+      newStr += str[i];
     }
     return newStr;
+  }
+
+  // one liner
+  function reverse(str) {
+    return str.split("").reverse().join("");
   }
 
   // ---------------------
@@ -137,7 +148,7 @@
   // arr is any array of various words and int is any whole numnber intager
   // return the new array formed from words longer than the intager
   function filterLongWords(arr, int) {
-    let newArr = [];
+    const newArr = [];
 
     for (let i = 0; i < arr.length; i++) {
       if (arr[i].length > int) {
@@ -153,9 +164,9 @@
 
   // takes the characters from a string and counts how many times they appear
   // str is a string of any characters
-  // return number of times character in question appears
+  // returns object stating each number and how many times it appears in the string
   function charFreq(str) {
-    let frequency = {};
+    const frequency = {};
 
     for (let i = 0; i < str.length; i++) {
       let character = str.charAt(i);
